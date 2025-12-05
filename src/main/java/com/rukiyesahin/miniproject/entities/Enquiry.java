@@ -17,7 +17,7 @@ public class Enquiry {
     private Long studentPhone;
     private String courseName;
     private String classMode;
-    private String enquiryStatus;
+    private String enqStatus;
     @CreationTimestamp
     private LocalDate createdDate;
     @UpdateTimestamp
@@ -67,11 +67,11 @@ public class Enquiry {
     }
 
     public String getEnquiryStatus() {
-        return enquiryStatus;
+        return enqStatus;
     }
 
     public void setEnquiryStatus(String enquiryStatus) {
-        this.enquiryStatus = enquiryStatus;
+        this.enqStatus = enquiryStatus;
     }
 
     public LocalDate getCreatedDate() {

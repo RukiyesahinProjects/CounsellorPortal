@@ -11,14 +11,13 @@
 
     <h2> Register Here</h2>
 
-    <span> style="color: red;">
-          <p th:text="${errMsg}"></p>
+    <span style="color:red; font-size:20px;">
+        <p th:text="${errMsg}"></p>
+    </span>
 
-      </span>
-    <span> style="color: green;">
-          <p th:text="${succesMsg}"></p>
-
-      </span>
+    <span style="color:green; font-size:20px;">
+        <p th:text="${sMsg}"></p>
+    </span>
 
     <form th:action="@{/Login}" th:object="${counsellor}" method="post">
         <table>

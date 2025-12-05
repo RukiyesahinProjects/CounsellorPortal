@@ -46,14 +46,23 @@ public class CounsellorController {
             HttpSession session = request.getSession(true);
             session.setAttribute("counsellorObj", c.getCounsellorId());
 
-            DashboardResponse dbresobj = counsellorService.getDashboardInfo(c.getCounsellorId());
-
-            model.addAttribute("dashboardInfo", dbresobj);
-
-            return "dashboard";
+            return "redirect:/dashboard";
         }
-
     }
+
+    @GetMapping("/dashboard")
+    public String displayDashboard(HttpServletRequest req, Model model){
+        //get existing session object
+        HttpSession session = req.getSession(false);
+        Integer counsellorId = (Integer) session.getAttribute("counsellorId");
+
+        DashboardResponse dbresObj = counsellorService.getDashboardInfo(counsellorId);
+
+        model.addAttribute("dashboardInfo", dbresObj);
+
+        return "dashboard";
+    }
+
     @GetMapping("/register")
     public String registerPage(Model model){
         Counsellor cobj = new Counsellor();
