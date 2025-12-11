@@ -29,7 +29,7 @@
                 <tr>
                     <td>
                         Class Mode :
-                        <select th:field="*{classMode}" required>
+                        <select th:field="*{classMode}" >
                               <option value="">-Select-</option>
                               <option value="Online">Online</option>
                               <option value="Classroom">Classroom</option>
@@ -37,7 +37,7 @@
                     </td>
                     <td>
                         Course Name :
-                        <select th:field="*{courseName}" required>
+                        <select th:field="*{courseName}" >
                               <option value="">-Select-</option>
                               <option value="Java">Java</option>
                               <option value="Python">Python</option>
@@ -47,7 +47,7 @@
                     </td>
                     <td>
                         Enquiry Status :
-                        <select th:field="*{enqStatus}" required>
+                        <select th:field="*{enqStatus}" >
                               <option value="">-Select-</option>
                               <option value="Open">Open</option>
                               <option value="Enrolled">Enrolled</option>
@@ -79,14 +79,14 @@
                 <tbody>
 
                   <tr th:each:="enq, loopCounter ${enquiries}">
-                       <td th:text="${loopCounter.index+1}"></td>
-                       <td th:text="${enq.stuName}"></td>
-                       <td th:text="${enq.studentPhone}"></td>
-                       <td th:text="${enq.courseName}"></td>
-                       <td th:text="${enq.classMode}"></td>
-                       <td th:text="${enq.enqStatus}"></td>
+                      <td th:text="${loopCounter.index + 1}"></td>
+                      <td th:text="${enq.stuName}"></td>
+                      <td th:text="${enq.courseName}"></td>
+                      <td th:text="${enq.classMode}"></td>
+                      <td th:text="${enq.studentPhone}"></td>
+                      <td th:text="${enq.enqStatus}"></td>
                       <td>
-                          <a href="">Edit</a>
+                          <a th:href="@{'/editEnq?enqId'+${enq.enqId}}">Edit</a>
                       </td>
                  </tr>
                 <tr th:if="${enquiries.size()==0}">

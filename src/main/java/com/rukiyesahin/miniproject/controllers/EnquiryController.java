@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -51,12 +52,20 @@ public class EnquiryController {
         return "viewEnqsPage";
     }
 
-    @GetMapping("/enquiry")
+    @GetMapping("/enquiry")   //For creating a NEW enquiry
     public String addEnquiryPage(Model model){
         Enquiry enquiry = new Enquiry();
         model.addAttribute("enquiry", enquiry);
         return "enquiryForm";
     }
+
+    @GetMapping("/editEnq")   //For editing an EXISTING enquiry
+    public String editEnquiry(@RequestParam("enqId") Integer enqId, Model model){
+        Enquiry enquiry = enqService.getEnquiryById(enqId);
+        model.addAttribute("enquiry", enquiry);
+        return "enquiryForm";
+    }
+
 
     @PostMapping("/addEnq")
     public String handleAddEnquiry(Enquiry enquiry, HttpServletRequest req, Model model) throws  Exception{
